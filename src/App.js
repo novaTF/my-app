@@ -18,6 +18,7 @@ class App extends Component {
           <div>
             <a href="/abc">首页</a>
             <a href="/abc2">关于</a>
+            修改测试
             <br />
             <Link to="abc"> 首页</Link>
             <Link to="abc2">关于</Link>
