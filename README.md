@@ -1,2 +1,2 @@
 # novaTF.github.io
-novatf.github.io
+https://novatf.github.io/
