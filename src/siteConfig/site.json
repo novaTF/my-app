@@ -1,0 +1,13 @@
+{
+  "avatar": "./avatar.png",
+  "title": "react",
+  "subTitle": "novatf's blog",
+  "intro": "前端开发",
+  "social": [
+    {
+      "text": "github",
+      "link": "https://github.com/novatf"
+    }
+  ],
+  "copyright": "© react | 2018 novatf"
+}

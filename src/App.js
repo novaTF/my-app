@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-
-import Home from './components/Home';
-import About from './components/About';
-import logo from './logo.svg';
+import createHistory from 'history/createBrowserHistory';
+import { Provider } from 'react-redux';
+// import { Route } from 'react-router';
+import { ConnectedRouter } from 'react-router-redux';
+import { createRoutes } from './routes';
+import configureStore from './store';
+import 'normalize.css';
+import 'github-markdown-css';
+import 'antd/dist/antd.css';
+// import Home from './containers/Home';
+// import About from './components/About';
+// import logo from './logo.svg';
 import './App.css';
 
+export const history = createHistory();
+export const store = configureStore(history, {})
+const routes = createRoutes(store);
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <BrowserRouter>
-          <div>
-            <a href="/abc">首页</a>
-            <a href="/abc2">关于</a>
-            修改测试最新代码321321
-            <br />
-            <Link to="abc"> 首页</Link>
-            <Link to="abc2">关于</Link>
-            <br />
-            <Route component={Home} />
-            <Route path="/abc" component={Home} />
-            <Route path="/abc2" component={About} />
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <div className="app-container">
+            {routes.map(r =>
+              <Route key={r.path} {...r}/>
+            )}
           </div>
+        </ConnectedRouter>
 
-        </BrowserRouter>
-      </div>
+      </Provider>
     );
   }
 }
